@@ -1,0 +1,33 @@
+def check_brackets(expression):
+    stack = []
+    result = ""
+    for char in expression:
+        if char == '(':
+            stack.append(char)
+        elif char == ')':
+            if stack:
+                stack.pop()
+            else:
+                result += '?'
+        else:
+            result += char
+
+    while stack:
+        result += 'x'
+        stack.pop()
+
+    return result
+
+
+# 测试样例
+test_cases = [
+    "bge)))))))))",
+    "((IIII))))))",
+    "()()()()(uuu",
+    "))))UUUU((()"
+]
+
+for test_case in test_cases:
+    print(check_brackets(test_case))
+
+ 
